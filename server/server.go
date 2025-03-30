@@ -11,6 +11,8 @@ func Start() {
 
 	handlerFunc := http.HandlerFunc(helloWorld)
 	mux.Handle("/helloWorld", handlerFunc)
+
+	http.ListenAndServe(":3000", mux)
 }
 
 func helloWorld(w http.ResponseWriter, r *http.Request) {
