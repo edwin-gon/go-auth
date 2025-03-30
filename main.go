@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"net/http"
 
 	"github.com/edwin-gon/go-auth/server"
 )
 
 func main() {
-	fmt.Println("Hello World")
-	server.Start()
+	mux := server.SetupServer()
+	http.ListenAndServe(":3000", mux)
 }
