@@ -6,13 +6,11 @@ import (
 	"net/http"
 )
 
-func Start() {
+func SetupServer() *http.ServeMux {
 	mux := http.NewServeMux()
 
-	handlerFunc := http.HandlerFunc(helloWorld)
-	mux.Handle("/helloWorld", handlerFunc)
-
-	http.ListenAndServe(":3000", mux)
+	mux.HandleFunc("/helloWorld", helloWorld)
+	return mux
 }
 
 func helloWorld(w http.ResponseWriter, r *http.Request) {
